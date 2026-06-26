@@ -55,17 +55,15 @@ const Events: NextPage = () => {
                       </td>
                     </tr>
                   ) : (
-                    EthToTokenEvents?.map((event, index) => {
-                      return (
-                        <tr key={index}>
-                          <td className="text-center">
-                            <Address address={event.args?.swapper} />
-                          </td>
-                          <td>{parseFloat(formatEther(event.args?.ethInput || 0n)).toFixed(4)}</td>
-                          <td>{parseFloat(formatEther(event.args?.tokenOutput || 0n)).toFixed(4)}</td>
-                        </tr>
-                      );
-                    })
+                    EthToTokenEvents.map((event, index) => (
+                      <tr key={index}>
+                        <td className="text-center">
+                          <Address address={event.args?.swapper} />
+                        </td>
+                        <td>{parseFloat(formatEther(event.args?.ethInput || 0n)).toFixed(4)}</td>
+                        <td>{parseFloat(formatEther(event.args?.tokenOutput || 0n)).toFixed(4)}</td>
+                      </tr>
+                    ))
                   )}
                 </tbody>
               </table>
@@ -99,17 +97,15 @@ const Events: NextPage = () => {
                       </td>
                     </tr>
                   ) : (
-                    tokenToEthEvents?.map((event, index) => {
-                      return (
-                        <tr key={index}>
-                          <td className="text-center">
-                            <Address address={event.args?.swapper} />
-                          </td>
-                          <td>{parseFloat(formatEther(event.args?.tokensInput || 0n)).toFixed(4)}</td>
-                          <td>{parseFloat(formatEther(event.args?.ethOutput || 0n)).toFixed(4)}</td>
-                        </tr>
-                      );
-                    })
+                    tokenToEthEvents.map((event, index) => (
+                      <tr key={index}>
+                        <td className="text-center">
+                          <Address address={event.args?.swapper} />
+                        </td>
+                        <td>{parseFloat(formatEther(event.args?.tokenInput || 0n)).toFixed(4)}</td>
+                        <td>{parseFloat(formatEther(event.args?.ethOutput || 0n)).toFixed(4)}</td>
+                      </tr>
+                    ))
                   )}
                 </tbody>
               </table>
@@ -133,7 +129,7 @@ const Events: NextPage = () => {
                     <th className="bg-primary">Address</th>
                     <th className="bg-primary">Amount of ETH In</th>
                     <th className="bg-primary">Amount of Balloons In</th>
-                    <th className="bg-primary">Lİquidity Minted</th>
+                    <th className="bg-primary">Liquidity Minted</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -144,18 +140,16 @@ const Events: NextPage = () => {
                       </td>
                     </tr>
                   ) : (
-                    liquidityProvidedEvents?.map((event, index) => {
-                      return (
-                        <tr key={index}>
-                          <td className="text-center">
-                            <Address address={event.args?.liquidityProvider} />
-                          </td>
-                          <td>{parseFloat(formatEther(event.args?.ethInput || 0n)).toFixed(4)}</td>
-                          <td>{parseFloat(formatEther(event.args?.tokensInput || 0n)).toFixed(4)}</td>
-                          <td>{parseFloat(formatEther(event.args?.liquidityMinted || 0n)).toFixed(4)}</td>
-                        </tr>
-                      );
-                    })
+                    liquidityProvidedEvents.map((event, index) => (
+                      <tr key={index}>
+                        <td className="text-center">
+                          <Address address={event.args?.lp} />
+                        </td>
+                        <td>{parseFloat(formatEther(event.args?.ethInput || 0n)).toFixed(4)}</td>
+                        <td>{parseFloat(formatEther(event.args?.tokensInput || 0n)).toFixed(4)}</td>
+                        <td>{parseFloat(formatEther(event.args?.liquidityMinted || 0n)).toFixed(4)}</td>
+                      </tr>
+                    ))
                   )}
                 </tbody>
               </table>
@@ -190,18 +184,16 @@ const Events: NextPage = () => {
                       </td>
                     </tr>
                   ) : (
-                    liquidityRemovedEvents?.map((event, index) => {
-                      return (
-                        <tr key={index}>
-                          <td className="text-center">
-                            <Address address={event.args?.liquidityRemover} />
-                          </td>
-                          <td>{parseFloat(formatEther(event.args?.ethOutput || 0n)).toFixed(4)}</td>
-                          <td>{parseFloat(formatEther(event.args?.tokensOutput || 0n)).toFixed(4)}</td>
-                          <td>{parseFloat(formatEther(event.args?.liquidityWithdrawn || 0n)).toFixed(4)}</td>
-                        </tr>
-                      );
-                    })
+                    liquidityRemovedEvents.map((event, index) => (
+                      <tr key={index}>
+                        <td className="text-center">
+                          <Address address={event.args?.lp} />
+                        </td>
+                        <td>{parseFloat(formatEther(event.args?.ethOutput || 0n)).toFixed(4)}</td>
+                        <td>{parseFloat(formatEther(event.args?.tokensOutput || 0n)).toFixed(4)}</td>
+                        <td>{parseFloat(formatEther(event.args?.liquidityAmount || 0n)).toFixed(4)}</td>
+                      </tr>
+                    ))
                   )}
                 </tbody>
               </table>
